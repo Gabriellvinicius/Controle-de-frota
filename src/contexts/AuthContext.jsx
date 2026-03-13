@@ -20,11 +20,18 @@ export const AuthProvider = ({ children }) => {
                 console.warn('Erro ao buscar perfil:', error.message);
                 // Fallback for demo mode or missing profile
                 if (localStorage.getItem('demo_mode') === 'true') {
-                    setProfile({ role: 'gestor' });
+                    setProfile({ role: 'gestor', active: true });
                 } else {
-                    setProfile({ role: 'gestor' });
+                    setProfile({ role: 'gestor', active: true });
                 }
             } else {
+                if (data.active === false) {
+                    await supabase.auth.signOut();
+                    setUser(null);
+                    setProfile(null);
+                    alert('Sua conta está inativa. Entre em contato com o administrador.');
+                    return;
+                }
                 setProfile(data);
             }
         } catch (err) {

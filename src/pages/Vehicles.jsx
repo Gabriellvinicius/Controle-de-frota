@@ -151,18 +151,18 @@ const Vehicles = () => {
             case 'ativo': return 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]';
             case 'manutenção': return 'bg-sky-500/10 text-sky-500 border-sky-500/20 shadow-[0_0_15px_rgba(14,165,233,0.1)]';
             case 'inativo': return 'bg-red-500/10 text-red-500 border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]';
-            default: return 'bg-white/5 text-slate-400 border-white/10';
+            default: return 'bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-white/10';
         }
     };
 
     return (
-        <div className="space-y-6 animate-fade-in text-white">
+        <div className="space-y-6 animate-fade-in text-slate-900 dark:text-white">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         Gestão de <span className="text-sky-500">Veículos</span>
                     </h1>
-                    <p className="text-slate-400">Gerencie todos os veículos da empresa</p>
+                    <p className="text-slate-500 dark:text-slate-400">Gerencie todos os veículos da empresa</p>
                 </div>
                 {isGestor && (
                     <button
@@ -183,7 +183,7 @@ const Vehicles = () => {
                         onClick={() => setFilter(s)}
                         className={`px-4 py-2 rounded-xl text-sm font-bold capitalize transition-all ${filter === s
                             ? 'bg-sky-600 text-white shadow-lg shadow-sky-900/20'
-                            : 'bg-white/5 text-slate-400 hover:bg-white/10 border border-white/5'
+                            : 'bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10 border border-slate-200 dark:border-white/5'
                             }`}
                     >
                         {s === 'all' ? 'Todos' : s}
@@ -199,9 +199,9 @@ const Vehicles = () => {
                 </div>
             ) : vehicles.length === 0 ? (
 
-                <div className="text-center py-12 bg-[#1c2229] rounded-2xl border border-dashed border-white/10">
-                    <Car className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-400">Nenhum veículo cadastrado</h3>
+                <div className="text-center py-12 bg-white dark:bg-[#1c2229] rounded-2xl border border-dashed border-slate-200 dark:border-white/10">
+                    <Car className="w-16 h-16 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-slate-500 dark:text-slate-400">Nenhum veículo cadastrado</h3>
                     <p className="text-slate-500 mb-6">Comece adicionando o primeiro veículo da frota.</p>
                     <button
                         onClick={handleNew}
@@ -216,29 +216,29 @@ const Vehicles = () => {
                         <div
                             key={vehicle.id}
                             onClick={() => handleEdit(vehicle)}
-                            className="bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
+                            className="bg-white dark:bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
                         >
                             <div className="flex justify-between items-start mb-6">
-                                <div className="p-3 bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                                <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                                     <Car className="w-6 h-6 text-sky-500" />
                                 </div>
                                 <span className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider border ${getStatusColor(vehicle.status)}`}>
                                     {vehicle.status}
                                 </span>
                             </div>
-                            <h3 className="text-xl font-black text-white">{vehicle.modelo}</h3>
-                            <p className="text-slate-400 text-sm mb-6 flex items-center font-medium uppercase tracking-tighter opacity-80">
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white">{vehicle.modelo}</h3>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 flex items-center font-medium uppercase tracking-tighter opacity-80">
                                 {vehicle.marca} <span className="mx-2 text-sky-500/50">•</span> {vehicle.ano}
                             </p>
 
-                            <div className="space-y-3 border-t border-white/5 pt-6">
+                            <div className="space-y-3 border-t border-slate-200 dark:border-white/5 pt-6">
                                 <div className="flex justify-between items-center text-sm">
                                     <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Placa</span>
-                                    <span className="font-mono font-bold text-white bg-white/5 px-2 py-1 rounded-lg border border-white/10 uppercase">{vehicle.placa}</span>
+                                    <span className="font-mono font-bold text-slate-900 dark:text-white bg-slate-50 dark:bg-white/5 px-2 py-1 rounded-lg border border-slate-200 dark:border-white/10 uppercase">{vehicle.placa}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm">
                                     <span className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Tipo</span>
-                                    <span className="font-bold text-slate-300">{vehicle.tipo}</span>
+                                    <span className="font-bold text-slate-700 dark:text-slate-300">{vehicle.tipo}</span>
                                 </div>
                                 {vehicle.proxima_manutencao && (
                                     <div className="flex justify-between items-center text-sm pt-2">
@@ -250,7 +250,7 @@ const Vehicles = () => {
                                             const diffTime = nextDate - today;
                                             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-                                            let badgeStyle = "text-slate-300";
+                                            let badgeStyle = "text-slate-700 dark:text-slate-300";
                                             let icon = null;
 
                                             if (diffDays < 0) {
@@ -271,7 +271,7 @@ const Vehicles = () => {
                                     </div>
                                 )}
                             </div>
-                            <div className="mt-4 pt-2 text-right border-t border-white/5">
+                            <div className="mt-4 pt-2 text-right border-t border-slate-200 dark:border-white/5">
                                 <span className="text-[10px] text-sky-500 font-bold uppercase tracking-widest group-hover:underline">
                                     {isGestor ? 'Editar' : 'Visualizar'}
                                 </span>
@@ -283,13 +283,13 @@ const Vehicles = () => {
 
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
-                    <div className="bg-[#1c2229] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 dark:bg-black/70 backdrop-blur-md p-4">
+                    <div className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
                         <div className="flex justify-between items-center mb-8">
-                            <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                            <h2 className="text-xl font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
                                 {isEditing ? 'Editar' : 'Novo'} <span className="text-sky-500">Veículo</span>
                             </h2>
-                            <button onClick={() => setShowModal(false)} className="bg-white/5 p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
+                            <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                                 <XCircle className="w-6 h-6" />
                             </button>
                         </div>
@@ -305,7 +305,7 @@ const Vehicles = () => {
                                         maxLength={7}
                                         value={formData.placa}
                                         onChange={(e) => setFormData({ ...formData, placa: e.target.value.toUpperCase() })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 font-mono uppercase ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 font-mono uppercase ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                         placeholder="ABC1D23"
                                     />
                                 </div>
@@ -317,7 +317,7 @@ const Vehicles = () => {
                                         readOnly={!isGestor}
                                         value={formData.ano}
                                         onChange={(e) => setFormData({ ...formData, ano: e.target.value })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     />
                                 </div>
                             </div>
@@ -330,7 +330,7 @@ const Vehicles = () => {
                                     readOnly={!isGestor}
                                     value={formData.marca}
                                     onChange={(e) => setFormData({ ...formData, marca: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     placeholder="Ex: Fiat"
                                 />
                             </div>
@@ -343,7 +343,7 @@ const Vehicles = () => {
                                     readOnly={!isGestor}
                                     value={formData.modelo}
                                     onChange={(e) => setFormData({ ...formData, modelo: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     placeholder="Ex: Uno Vivace"
                                 />
                             </div>
@@ -355,12 +355,12 @@ const Vehicles = () => {
                                         disabled={!isGestor}
                                         value={formData.tipo}
                                         onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     >
-                                        <option className="bg-[#1c2229]">Carro</option>
-                                        <option className="bg-[#1c2229]">Moto</option>
-                                        <option className="bg-[#1c2229]">Caminhão</option>
-                                        <option className="bg-[#1c2229]">Utilitário</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">Carro</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">Moto</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">Caminhão</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">Utilitário</option>
                                     </select>
                                 </div>
                                 <div>
@@ -369,11 +369,11 @@ const Vehicles = () => {
                                         disabled={!isGestor}
                                         value={formData.status}
                                         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     >
-                                        <option value="ativo" className="bg-[#1c2229]">Ativo</option>
-                                        <option value="manutenção" className="bg-[#1c2229]">Manutenção</option>
-                                        <option value="inativo" className="bg-[#1c2229]">Inativo</option>
+                                        <option value="ativo" className="bg-white dark:bg-[#1c2229]">Ativo</option>
+                                        <option value="manutenção" className="bg-white dark:bg-[#1c2229]">Manutenção</option>
+                                        <option value="inativo" className="bg-white dark:bg-[#1c2229]">Inativo</option>
                                     </select>
                                 </div>
                             </div>
@@ -385,7 +385,7 @@ const Vehicles = () => {
                                     readOnly={!isGestor}
                                     value={formData.proxima_manutencao || ''}
                                     onChange={(e) => setFormData({ ...formData, proxima_manutencao: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 />
                             </div>
 
@@ -402,7 +402,7 @@ const Vehicles = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowModal(false)}
-                                    className="flex-1 px-4 py-3 border border-white/10 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white font-black uppercase tracking-widest text-xs transition-all"
+                                    className="flex-1 px-4 py-3 border border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-xs transition-all"
                                 >
                                     {isGestor ? 'Cancelar' : 'Fechar'}
                                 </button>

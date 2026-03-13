@@ -359,15 +359,15 @@ const Trips = () => {
         <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         Planilha de <span className="text-sky-500">Viagem</span>
                     </h1>
-                    <p className="text-slate-400">Controle de rotas e logística da frota</p>
+                    <p className="text-slate-500 dark:text-slate-400">Controle de rotas e logística da frota</p>
                 </div>
                 <div className="flex gap-2">
                     <button
                         onClick={exportPDF}
-                        className="flex items-center justify-center px-4 py-2 bg-white/5 text-white rounded-xl hover:bg-white/10 transition border border-white/10 text-xs font-bold uppercase tracking-widest"
+                        className="flex items-center justify-center px-4 py-2 bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl hover:bg-slate-200 dark:hover:bg-white/10 transition border border-slate-200 dark:border-white/10 text-xs font-bold uppercase tracking-widest"
                     >
                         <Download className="w-5 h-5 mr-2" />
                         PDF
@@ -392,7 +392,7 @@ const Trips = () => {
                     placeholder="Buscar por destino, motorista ou placa..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border-white/10 text-white focus:ring-sky-500 focus:border-sky-500 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-sky-500 focus:border-sky-500 shadow-sm"
                 />
             </div>
 
@@ -402,9 +402,9 @@ const Trips = () => {
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-500 mx-auto"></div>
                 </div>
             ) : trips.length === 0 ? (
-                <div className="text-center py-12 bg-[#1c2229] rounded-2xl border border-dashed border-white/10">
-                    <Map className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-400">Nenhuma viagem registrada</h3>
+                <div className="text-center py-12 bg-white dark:bg-[#1c2229] rounded-2xl border border-dashed border-slate-200 dark:border-white/10">
+                    <Map className="w-16 h-16 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-slate-500 dark:text-slate-400">Nenhuma viagem registrada</h3>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 gap-4">
@@ -412,7 +412,7 @@ const Trips = () => {
                         <div
                             key={trip.id}
                             onClick={() => handleEdit(trip)}
-                            className="bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
+                            className="bg-white dark:bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
                         >
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div className="flex-1">
@@ -429,35 +429,35 @@ const Trips = () => {
                                         </div>
                                         <span className="text-slate-500 text-xs font-bold uppercase tracking-widest">{trip.duracao_dias} dias</span>
                                     </div>
-                                    <h3 className="text-xl font-black text-white uppercase tracking-tight">{trip.destino}</h3>
+                                    <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{trip.destino}</h3>
                                     {trip.motivo && (
-                                        <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1 mb-2">
-                                            Motivo: <span className="text-slate-200">{trip.motivo}</span>
+                                        <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest mt-1 mb-2">
+                                            Motivo: <span className="text-slate-900 dark:text-slate-200 font-black">{trip.motivo}</span>
                                         </p>
                                     )}
                                     <div className="flex flex-wrap gap-4 mt-3">
-                                        <div className="flex items-center text-sm text-slate-400">
+                                        <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                                             <Navigation className="w-4 h-4 mr-1 text-sky-500" />
                                             {trip.veiculos?.modelo} ({trip.veiculos?.placa})
                                         </div>
-                                        <div className="flex items-center text-sm text-slate-400">
+                                        <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                                             <Users className="w-4 h-4 mr-1 text-sky-500" />
                                             {trip.condutores?.nome || 'N/A'}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:text-right border-t md:border-t-0 md:border-l border-white/5 pt-4 md:pt-0 md:pl-6">
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:text-right border-t md:border-t-0 md:border-l border-slate-200 dark:border-white/5 pt-4 md:pt-0 md:pl-6">
                                     <div>
                                         <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Distância</div>
-                                        <div className="text-lg font-black text-white">{trip.distancia_km} KM</div>
+                                        <div className="text-lg font-black text-slate-900 dark:text-white">{trip.distancia_km} KM</div>
                                     </div>
                                     <div>
                                         <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Pessoas</div>
-                                        <div className="text-lg font-black text-white">{trip.qtd_pessoas}</div>
+                                        <div className="text-lg font-black text-slate-900 dark:text-white">{trip.qtd_pessoas}</div>
                                     </div>
                                     <div>
                                         <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Pedágios</div>
-                                        <div className="text-lg font-black text-white">{trip.qtd_pedagios}</div>
+                                        <div className="text-lg font-black text-slate-900 dark:text-white">{trip.qtd_pedagios}</div>
                                     </div>
                                     <div>
                                         <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Status</div>
@@ -475,7 +475,7 @@ const Trips = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-4 pt-2 text-right border-t border-white/5">
+                            <div className="mt-4 pt-2 text-right border-t border-slate-200 dark:border-white/5">
                                 <span className="text-[10px] text-sky-500 font-bold uppercase tracking-widest group-hover:underline">
                                     {isGestor ? 'Clique para editar' : 'Clique para visualizar'}
                                 </span>
@@ -490,12 +490,12 @@ const Trips = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg p-4 overflow-y-auto pt-10 pb-10">
                     <div className={`flex flex-col lg:flex-row gap-8 w-full ${routeOptions.length > 0 ? 'max-w-6xl' : 'max-w-2xl'} items-stretch justify-center transition-all duration-300`}>
                         {/* CARD DO FORMULÁRIO */}
-                        <div className="bg-[#1c2229] border border-white/10 rounded-[2.5rem] w-full lg:max-w-2xl shadow-2xl p-8 md:p-10 animate-in zoom-in-95 duration-300 flex flex-col will-change-transform">
+                        <div className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-[2.5rem] w-full lg:max-w-2xl shadow-2xl p-8 md:p-10 animate-in zoom-in-95 duration-300 flex flex-col will-change-transform">
                             <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-2xl font-black text-white italic uppercase tracking-tight">
+                                <h2 className="text-2xl font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
                                     {isEditing ? 'Editar' : 'Registrar'} <span className="text-sky-500">Viagem</span>
                                 </h2>
-                                <button onClick={() => setShowModal(false)} className="bg-white/5 p-3 rounded-2xl text-slate-400 hover:text-white hover:bg-red-500/20 transition-all duration-300">
+                                <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-3 rounded-2xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-red-500/20 transition-all duration-300">
                                     <X className="w-6 h-6" />
                                 </button>
                             </div>
@@ -508,11 +508,11 @@ const Trips = () => {
                                             required
                                             value={formData.condutor_id}
                                             onChange={(e) => setFormData({ ...formData, condutor_id: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
                                         >
-                                            <option value="" className="bg-[#1c2229]">Selecione um motorista</option>
+                                            <option value="" className="bg-white dark:bg-[#1c2229]">Selecione um motorista</option>
                                             {drivers.map(d => (
-                                                <option key={d.id} value={d.id} className="bg-[#1c2229]">{d.nome}</option>
+                                                <option key={d.id} value={d.id} className="bg-white dark:bg-[#1c2229]">{d.nome}</option>
                                             ))}
                                         </select>
                                     </div>
@@ -522,11 +522,11 @@ const Trips = () => {
                                             required
                                             value={formData.veiculo_id}
                                             onChange={(e) => setFormData({ ...formData, veiculo_id: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
                                         >
-                                            <option value="" className="bg-[#1c2229]">Selecione um veículo</option>
+                                            <option value="" className="bg-white dark:bg-[#1c2229]">Selecione um veículo</option>
                                             {vehicles.map(v => (
-                                                <option key={v.id} value={v.id} className="bg-[#1c2229]">{v.modelo} ({v.placa})</option>
+                                                <option key={v.id} value={v.id} className="bg-white dark:bg-[#1c2229]">{v.modelo} ({v.placa})</option>
                                             ))}
                                         </select>
                                     </div>
@@ -540,7 +540,7 @@ const Trips = () => {
                                             required
                                             value={formData.origem}
                                             onChange={(e) => setFormData({ ...formData, origem: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                             placeholder="Cidade de origem"
                                         />
                                     </div>
@@ -552,7 +552,7 @@ const Trips = () => {
                                                 required
                                                 value={formData.destino}
                                                 onChange={(e) => setFormData({ ...formData, destino: e.target.value })}
-                                                className="flex-1 bg-white/5 border-white/10 rounded-xl px-4 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 text-sm"
+                                                className="flex-1 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                                 placeholder="Cidade de destino"
                                             />
                                             <button
@@ -563,7 +563,7 @@ const Trips = () => {
                                                 title="Calcular KM automaticamente"
                                             >
                                                 {isCalculating ? (
-                                                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                                                    <Loader2 className="w-4 h-4 animate-spin text-slate-900 dark:text-white" />
                                                 ) : (
                                                     <Navigation className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                                 )}
@@ -581,7 +581,7 @@ const Trips = () => {
                                             required
                                             value={formData.data_inicio}
                                             onChange={(e) => setFormData({ ...formData, data_inicio: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-3 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
                                         />
                                     </div>
                                     <div className="col-span-1">
@@ -590,7 +590,7 @@ const Trips = () => {
                                             type="date"
                                             value={formData.data_retorno}
                                             onChange={(e) => setFormData({ ...formData, data_retorno: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-3 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-sm"
                                         />
                                     </div>
                                     <div>
@@ -600,7 +600,7 @@ const Trips = () => {
                                             required
                                             value={formData.distancia_km}
                                             onChange={(e) => setFormData({ ...formData, distancia_km: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-3 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                         />
                                     </div>
                                     <div>
@@ -609,7 +609,7 @@ const Trips = () => {
                                             type="number"
                                             value={formData.qtd_pessoas}
                                             onChange={(e) => setFormData({ ...formData, qtd_pessoas: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-3 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                         />
                                     </div>
                                     <div>
@@ -619,7 +619,7 @@ const Trips = () => {
                                             step="0.01"
                                             value={formData.qtd_pedagios}
                                             onChange={(e) => setFormData({ ...formData, qtd_pedagios: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-3 py-2.5 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 text-sm"
                                             placeholder="0,00"
                                         />
                                     </div>
@@ -630,7 +630,7 @@ const Trips = () => {
                                     <textarea
                                         value={formData.motivo}
                                         onChange={(e) => setFormData({ ...formData, motivo: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-2 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 resize-none h-16 md:h-20 text-sm"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 resize-none h-16 md:h-20 text-sm"
                                         placeholder="Descreva o motivo da viagem..."
                                     ></textarea>
                                 </div>
@@ -648,7 +648,7 @@ const Trips = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 px-4 py-2.5 border border-white/10 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white font-black uppercase tracking-widest text-xs transition-all"
+                                        className="flex-1 px-4 py-2.5 border border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-xs transition-all"
                                     >
                                         {isGestor ? 'Cancelar' : 'Fechar'}
                                     </button>
@@ -666,8 +666,8 @@ const Trips = () => {
 
                         {/* CARD DE SUGESTÕES DE ROTA (SEPARADO) */}
                         {(routeOptions.length > 0 || isCalculating) && (
-                            <div className="w-full lg:w-[340px] shrink-0 bg-[#1c2229] border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col animate-in slide-in-from-right-12 fade-in duration-300 h-auto will-change-transform">
-                                <div className="p-6 border-b border-white/5 bg-sky-500/5 rounded-t-[2.5rem] flex items-center justify-between">
+                            <div className="w-full lg:w-[340px] shrink-0 bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col animate-in slide-in-from-right-12 fade-in duration-300 h-auto will-change-transform">
+                                <div className="p-6 border-b border-slate-200 dark:border-white/5 bg-sky-500/5 rounded-t-[2.5rem] flex items-center justify-between">
                                     <p className="text-xs font-black text-sky-500 uppercase tracking-[0.2em] flex items-center gap-3">
                                         <div className="p-2 bg-sky-500/10 rounded-xl">
                                             <Map className="w-5 h-5" />
@@ -675,7 +675,7 @@ const Trips = () => {
                                         {isCalculating ? 'Calculando...' : 'Rotas'}
                                     </p>
                                     {!isCalculating && (
-                                        <button onClick={() => setRouteOptions([])} className="text-slate-500 hover:text-white p-1 hover:bg-white/5 rounded-lg transition-all">
+                                        <button onClick={() => setRouteOptions([])} className="text-slate-500 hover:text-slate-900 dark:hover:text-white p-1 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-all">
                                             <X className="w-4 h-4" />
                                         </button>
                                     )}
@@ -686,12 +686,12 @@ const Trips = () => {
                                         <div className="p-6 space-y-6 animate-pulse">
                                             {[1, 2].map(i => (
                                                 <div key={i} className="space-y-4">
-                                                    <div className="h-4 bg-white/5 rounded-full w-3/4"></div>
+                                                    <div className="h-4 bg-slate-50 dark:bg-white/5 rounded-full w-3/4"></div>
                                                     <div className="flex gap-2">
-                                                        <div className="h-3 bg-white/5 rounded-full w-1/4"></div>
-                                                        <div className="h-3 bg-white/5 rounded-full w-1/4"></div>
+                                                        <div className="h-3 bg-slate-50 dark:bg-white/5 rounded-full w-1/4"></div>
+                                                        <div className="h-3 bg-slate-50 dark:bg-white/5 rounded-full w-1/4"></div>
                                                     </div>
-                                                    <div className="h-16 bg-white/5 rounded-2xl w-full"></div>
+                                                    <div className="h-16 bg-slate-50 dark:bg-white/5 rounded-2xl w-full"></div>
                                                 </div>
                                             ))}
                                         </div>
@@ -712,12 +712,12 @@ const Trips = () => {
                                             >
                                                 <div className="flex justify-between items-start mb-3">
                                                     <div className="flex-1">
-                                                        <p className="text-base font-black text-white group-hover:text-sky-400 transition-colors uppercase leading-tight tracking-tight">{opt.name}</p>
+                                                        <p className="text-base font-black text-slate-900 dark:text-white group-hover:text-sky-400 transition-colors uppercase leading-tight tracking-tight">{opt.name}</p>
                                                         <div className="flex flex-wrap gap-2 mt-3">
                                                             <span className="bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full text-[10px] font-black uppercase border border-sky-500/10">
                                                                 {opt.distance} KM
                                                             </span>
-                                                            <span className="bg-slate-500/10 text-slate-400 px-3 py-1 rounded-full text-[10px] font-black uppercase border border-white/5">
+                                                            <span className="bg-slate-500/10 text-slate-500 dark:text-slate-400 px-3 py-1 rounded-full text-[10px] font-black uppercase border border-slate-200 dark:border-white/5">
                                                                 {Math.floor(opt.duration / 60)}h {opt.duration % 60}m
                                                             </span>
                                                             {opt.tolls > 0 && (
@@ -737,11 +737,11 @@ const Trips = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="mt-4 bg-black/30 rounded-2xl p-4 space-y-3">
+                                                <div className="mt-4 bg-slate-50 dark:bg-black/30 rounded-2xl p-4 space-y-3">
                                                     {opt.steps?.slice(0, 4).map((s, idx) => (
-                                                        <div key={idx} className="flex gap-3 text-[11px] text-slate-400 leading-normal items-start">
+                                                        <div key={idx} className="flex gap-3 text-[11px] text-slate-500 dark:text-slate-400 leading-normal items-start">
                                                             <div className="w-1.5 h-1.5 rounded-full bg-sky-500/50 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(14,165,233,0.5)]" />
-                                                            <span>{s.instruction} <span className="text-slate-600 font-bold ml-1">{s.distance}km</span></span>
+                                                            <span>{s.instruction} <span className="text-slate-400 dark:text-slate-600 font-bold ml-1">{s.distance}km</span></span>
                                                         </div>
                                                     ))}
                                                     {opt.steps?.length > 4 && (

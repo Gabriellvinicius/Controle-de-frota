@@ -152,13 +152,13 @@ const Maintenance = () => {
     const statusColor = (s) => s === 'em dia' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700';
 
     return (
-        <div className="space-y-6 animate-fade-in text-white">
+        <div className="space-y-6 animate-fade-in text-slate-900 dark:text-white">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         Plano de <span className="text-sky-500">Manutenção</span>
                     </h1>
-                    <p className="text-slate-400">Histórico de reparos e revisões</p>
+                    <p className="text-slate-500 dark:text-slate-400">Histórico de reparos e revisões</p>
                 </div>
                 {isGestor && (
                     <button
@@ -171,10 +171,10 @@ const Maintenance = () => {
                 )}
             </div>
 
-            <div className="bg-[#1c2229] rounded-2xl shadow-xl border border-white/5 overflow-hidden">
+            <div className="bg-white dark:bg-[#1c2229] rounded-2xl shadow-xl border border-slate-200 dark:border-white/5 overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm text-slate-600">
-                        <thead className="bg-white/5 border-b border-white/5 text-[10px] uppercase font-black text-slate-500 tracking-widest">
+                    <table className="w-full text-left text-sm text-slate-400 dark:text-slate-600">
+                        <thead className="bg-slate-50 dark:bg-white/5 border-b border-slate-200 dark:border-white/5 text-[10px] uppercase font-black text-slate-500 tracking-widest">
                             <tr>
                                 <th className="px-6 py-4">Veículo</th>
                                 <th className="px-6 py-4">Tipo</th>
@@ -184,19 +184,19 @@ const Maintenance = () => {
                                 <th className="px-6 py-4 text-right">Ações</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-white/5">
+                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                             {data.map((item) => (
                                 <tr
                                     key={item.id}
                                     onClick={() => handleEdit(item)}
-                                    className="hover:bg-slate-50/5 transition-colors cursor-pointer group"
+                                    className="hover:bg-slate-50 dark:hover:bg-slate-50/5 transition-colors cursor-pointer group"
                                 >
-                                    <td className="px-6 py-4 font-black text-white italic uppercase tracking-tight">
-                                        {item.veiculos?.modelo} <span className="text-slate-400 font-normal">({item.veiculos?.placa})</span>
+                                    <td className="px-6 py-4 font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
+                                        {item.veiculos?.modelo} <span className="text-slate-500 dark:text-slate-400 font-normal">({item.veiculos?.placa})</span>
                                     </td>
-                                    <td className="px-6 py-4 font-medium text-slate-300">{item.tipo}</td>
-                                    <td className="px-6 py-4 font-mono text-slate-400">{new Date(item.data).toLocaleDateString('pt-BR')}</td>
-                                    <td className="px-6 py-4 font-black text-white italic tracking-tighter">R$ {parseFloat(item.custo).toFixed(2)}</td>
+                                    <td className="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">{item.tipo}</td>
+                                    <td className="px-6 py-4 font-mono text-slate-500 dark:text-slate-400">{new Date(item.data).toLocaleDateString('pt-BR')}</td>
+                                    <td className="px-6 py-4 font-black text-slate-900 dark:text-white italic tracking-tighter">R$ {parseFloat(item.custo).toFixed(2)}</td>
                                     <td className="px-6 py-4">
                                         <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${item.status === 'concluída' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-yellow-500/10 text-yellow-500'
                                             }`}>
@@ -212,7 +212,7 @@ const Maintenance = () => {
                             ))}
                             {data.length === 0 && (
                                 <tr>
-                                    <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
+                                    <td colSpan={6} className="px-6 py-12 text-center text-slate-500 dark:text-slate-400">
                                         Nenhuma manutenção registrada.
                                     </td>
                                 </tr>
@@ -222,13 +222,13 @@ const Maintenance = () => {
                 </div>
                 {/* Modal */}
                 {showModal && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
-                        <div className="bg-[#1c2229] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 dark:bg-black/70 backdrop-blur-md p-4">
+                        <div className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
                             <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                                <h2 className="text-xl font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
                                     {isEditing ? 'Editar' : 'Nova'} <span className="text-sky-500">Manutenção</span>
                                 </h2>
-                                <button onClick={() => setShowModal(false)} className="bg-white/5 p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
+                                <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                                     <X className="w-6 h-6" />
                                 </button>
                             </div>
@@ -240,11 +240,11 @@ const Maintenance = () => {
                                         required
                                         value={formData.veiculo_id}
                                         onChange={(e) => setFormData({ ...formData, veiculo_id: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                     >
-                                        <option value="" className="bg-[#1c2229]">Selecione um veículo</option>
+                                        <option value="" className="bg-white dark:bg-[#1c2229]">Selecione um veículo</option>
                                         {vehicles.map(v => (
-                                            <option key={v.id} value={v.id} className="bg-[#1c2229]">
+                                            <option key={v.id} value={v.id} className="bg-white dark:bg-[#1c2229]">
                                                 {v.modelo} ({v.placa})
                                             </option>
                                         ))}
@@ -259,7 +259,7 @@ const Maintenance = () => {
                                             required
                                             value={formData.tipo}
                                             onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600"
                                             placeholder="Ex: Troca de óleo"
                                         />
                                     </div>
@@ -271,7 +271,7 @@ const Maintenance = () => {
                                             required
                                             value={formData.custo}
                                             onChange={(e) => setFormData({ ...formData, custo: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600"
                                         />
                                     </div>
                                     <div>
@@ -280,7 +280,7 @@ const Maintenance = () => {
                                             type="date"
                                             value={formData.proxima_manutencao}
                                             onChange={(e) => setFormData({ ...formData, proxima_manutencao: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -293,7 +293,7 @@ const Maintenance = () => {
                                             required
                                             value={formData.data}
                                             onChange={(e) => setFormData({ ...formData, data: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                         />
                                     </div>
                                     <div>
@@ -301,11 +301,11 @@ const Maintenance = () => {
                                         <select
                                             value={formData.status}
                                             onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                         >
-                                            <option value="concluída" className="bg-[#1c2229]">Concluída</option>
-                                            <option value="pendente" className="bg-[#1c2229]">Pendente</option>
-                                            <option value="em andamento" className="bg-[#1c2229]">Em Andamento</option>
+                                            <option value="concluída" className="bg-white dark:bg-[#1c2229]">Concluída</option>
+                                            <option value="pendente" className="bg-white dark:bg-[#1c2229]">Pendente</option>
+                                            <option value="em andamento" className="bg-white dark:bg-[#1c2229]">Em Andamento</option>
                                         </select>
                                     </div>
                                 </div>
@@ -315,7 +315,7 @@ const Maintenance = () => {
                                     <textarea
                                         value={formData.descricao}
                                         onChange={(e) => setFormData({ ...formData, descricao: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 h-24 resize-none"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 h-24 resize-none"
                                         placeholder="Detalhes sobre a manutenção realizada..."
                                     />
                                 </div>
@@ -333,7 +333,7 @@ const Maintenance = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 px-4 py-3 border border-white/10 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white font-black uppercase tracking-widest text-xs transition-all"
+                                        className="flex-1 px-4 py-3 border border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-xs transition-all"
                                     >
                                         {isGestor ? 'Cancelar' : 'Fechar'}
                                     </button>

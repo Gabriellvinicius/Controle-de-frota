@@ -210,7 +210,7 @@ const Checklists = () => {
             {/* Header section with refined typography */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
                 <div>
-                    <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic leading-none">
+                    <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic leading-none">
                         Vistorias <span className="text-sky-500">e Check-list</span>
                     </h1>
                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Monitoramento de integridade da frota</p>
@@ -229,41 +229,41 @@ const Checklists = () => {
                     <div
                         key={item.id}
                         onClick={() => handleEdit(item)}
-                        className="bg-[#1c2229] border border-white/10 rounded-[2rem] p-8 shadow-2xl flex flex-col md:flex-row items-center gap-8 group hover:border-sky-500/40 transition-all duration-500 cursor-pointer relative overflow-hidden"
+                        className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-[2rem] p-8 shadow-2xl flex flex-col md:flex-row items-center gap-8 group hover:border-sky-500/40 transition-all duration-500 cursor-pointer relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 blur-[60px] -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                         <div className="flex-1 w-full relative z-10">
                             <div className="flex items-center gap-4 mb-4">
-                                <div className="px-4 py-1.5 bg-white/5 border border-white/5 rounded-full">
+                                <div className="px-4 py-1.5 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-full">
                                     <span className="text-sky-500 text-[10px] font-black uppercase tracking-widest italic">
                                         {new Date(item.data).toLocaleDateString('pt-BR')}
                                     </span>
                                 </div>
-                                <span className="text-slate-600 text-[10px] font-black uppercase tracking-widest">{item.hora?.substring(0, 5)}</span>
+                                <span className="text-slate-400 dark:text-slate-600 text-[10px] font-black uppercase tracking-widest">{item.hora?.substring(0, 5)}</span>
                             </div>
 
-                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic leading-tight group-hover:text-sky-500 transition-colors">
-                                {item.veiculos?.modelo} <span className="text-slate-600 font-bold not-italic ml-2">{item.veiculos?.placa}</span>
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-tight group-hover:text-sky-500 transition-colors">
+                                {item.veiculos?.modelo} <span className="text-slate-400 dark:text-slate-600 font-bold not-italic ml-2">{item.veiculos?.placa}</span>
                             </h3>
 
                             <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.2em] mt-3">
-                                Responsável: <span className="text-slate-300 ml-1">{item.condutores?.nome || 'N/A'}</span>
+                                Responsável: <span className="text-slate-700 dark:text-slate-300 ml-1">{item.condutores?.nome || 'N/A'}</span>
                             </p>
 
                             <div className="mt-8 flex flex-wrap gap-6">
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Quilometragem</span>
+                                    <span className="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">Quilometragem</span>
                                     <div className="flex items-center gap-2">
                                         <Check className="w-4 h-4 text-sky-500" />
-                                        <span className="text-white font-black italic tracking-tight">{item.km_atual} KM</span>
+                                        <span className="text-slate-900 dark:text-white font-black italic tracking-tight">{item.km_atual} KM</span>
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-1 border-l border-white/5 pl-6">
-                                    <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Nível Tanque</span>
+                                <div className="flex flex-col gap-1 border-l border-slate-200 dark:border-white/5 pl-6">
+                                    <span className="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">Nível Tanque</span>
                                     <div className="flex items-center gap-2">
                                         <Check className="w-4 h-4 text-blue-500" />
-                                        <span className="text-white font-black italic tracking-tight uppercase text-xs">{item.nivel_combustivel}</span>
+                                        <span className="text-slate-900 dark:text-white font-black italic tracking-tight uppercase text-xs">{item.nivel_combustivel}</span>
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +287,7 @@ const Checklists = () => {
                                 </div>
                             )}
                             <div className="mt-2">
-                                <span className="text-[10px] text-slate-600 font-black uppercase tracking-[0.3em] group-hover:text-sky-500 transition-colors flex items-center gap-2">
+                                <span className="text-[10px] text-slate-400 dark:text-slate-600 font-black uppercase tracking-[0.3em] group-hover:text-sky-500 transition-colors flex items-center gap-2">
                                     DETALHES DA INSPEÇÃO <Plus className="w-3 h-3" />
                                 </span>
                             </div>
@@ -295,11 +295,11 @@ const Checklists = () => {
                     </div>
                 ))}
                 {checklists.length === 0 && (
-                    <div className="text-center py-24 bg-[#1c2229] rounded-[2.5rem] border border-dashed border-white/10 shadow-2xl">
-                        <div className="p-6 bg-white/5 rounded-3xl inline-block mb-6">
-                            <ClipboardList className="w-12 h-12 text-slate-600" />
+                    <div className="text-center py-24 bg-white dark:bg-[#1c2229] rounded-[2.5rem] border border-dashed border-slate-200 dark:border-white/10 shadow-2xl">
+                        <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl inline-block mb-6">
+                            <ClipboardList className="w-12 h-12 text-slate-400 dark:text-slate-600" />
                         </div>
-                        <h3 className="text-xl font-black text-white italic tracking-tighter uppercase mb-2">Nenhum Check-list Registrado</h3>
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white italic tracking-tighter uppercase mb-2">Nenhum Check-list Registrado</h3>
                         <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-8">Inicie uma nova inspeção para monitorar a frota</p>
                         <button
                             onClick={handleNew}
@@ -313,17 +313,17 @@ const Checklists = () => {
                 {/* Modal Modernizado */}
                 {showModal && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 animate-in fade-in duration-300">
-                        <div className="bg-[#0f1115] border border-white/10 rounded-[2.5rem] w-full max-w-2xl shadow-[0_64px_128px_-16px_rgba(0,0,0,0.8)] p-10 animate-in zoom-in-95 slide-in-from-bottom-10 duration-500 max-h-[90vh] overflow-y-auto custom-scrollbar relative">
+                        <div className="bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-white/10 rounded-[2.5rem] w-full max-w-2xl shadow-[0_64px_128px_-16px_rgba(0,0,0,0.8)] p-10 animate-in zoom-in-95 slide-in-from-bottom-10 duration-500 max-h-[90vh] overflow-y-auto custom-scrollbar relative transition-colors">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-sky-600/5 blur-[100px] -mr-32 -mt-32"></div>
 
                             <div className="flex justify-between items-center mb-10 relative z-10">
                                 <div>
-                                    <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">
+                                    <h2 className="text-2xl font-black text-slate-900 dark:text-white italic uppercase tracking-tighter">
                                         {isEditing ? 'Visualização' : 'Nova'} <span className="text-sky-500">Inspeção</span>
                                     </h2>
                                     <p className="text-[9px] text-slate-500 font-black uppercase tracking-[0.3em] mt-2">Dados detalhados do check-list diário</p>
                                 </div>
-                                <button onClick={() => setShowModal(false)} className="bg-white/5 p-3 rounded-2xl text-slate-500 hover:text-white transition-colors border border-white/5 shadow-xl">
+                                <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-3 rounded-2xl text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors border border-slate-200 dark:border-white/5 shadow-xl">
                                     <X className="w-6 h-6" />
                                 </button>
                             </div>
@@ -336,11 +336,11 @@ const Checklists = () => {
                                             required
                                             value={formData.veiculo_id}
                                             onChange={(e) => setFormData({ ...formData, veiculo_id: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-2xl px-6 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
                                         >
-                                            <option value="" className="bg-[#1c2229]">Selecione o Veículo</option>
+                                            <option value="" className="bg-white dark:bg-[#1c2229]">Selecione o Veículo</option>
                                             {vehicles.map(v => (
-                                                <option key={v.id} value={v.id} className="bg-[#1c2229]">
+                                                <option key={v.id} value={v.id} className="bg-white dark:bg-[#1c2229]">
                                                     {v.modelo} ({v.placa})
                                                 </option>
                                             ))}
@@ -352,11 +352,11 @@ const Checklists = () => {
                                             required
                                             value={formData.condutor_id}
                                             onChange={(e) => setFormData({ ...formData, condutor_id: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-2xl px-6 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
                                         >
-                                            <option value="" className="bg-[#1c2229]">Selecione o Condutor</option>
+                                            <option value="" className="bg-white dark:bg-[#1c2229]">Selecione o Condutor</option>
                                             {drivers.map(d => (
-                                                <option key={d.id} value={d.id} className="bg-[#1c2229]">
+                                                <option key={d.id} value={d.id} className="bg-white dark:bg-[#1c2229]">
                                                     {d.nome}
                                                 </option>
                                             ))}
@@ -372,7 +372,7 @@ const Checklists = () => {
                                             required
                                             value={formData.km_atual}
                                             onChange={(e) => setFormData({ ...formData, km_atual: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all font-bold text-sm placeholder:text-slate-700"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-2xl px-6 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all font-bold text-sm placeholder:text-slate-700"
                                             placeholder="0"
                                         />
                                     </div>
@@ -381,18 +381,18 @@ const Checklists = () => {
                                         <select
                                             value={formData.nivel_combustivel}
                                             onChange={(e) => setFormData({ ...formData, nivel_combustivel: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-2xl px-6 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all appearance-none cursor-pointer font-bold text-sm"
                                         >
-                                            <option className="bg-[#1c2229]">Reserva</option>
-                                            <option className="bg-[#1c2229]">1/4</option>
-                                            <option className="bg-[#1c2229]">1/2</option>
-                                            <option className="bg-[#1c2229]">3/4</option>
-                                            <option className="bg-[#1c2229]">Cheio</option>
+                                            <option className="bg-white dark:bg-[#1c2229]">Reserva</option>
+                                            <option className="bg-white dark:bg-[#1c2229]">1/4</option>
+                                            <option className="bg-white dark:bg-[#1c2229]">1/2</option>
+                                            <option className="bg-white dark:bg-[#1c2229]">3/4</option>
+                                            <option className="bg-white dark:bg-[#1c2229]">Cheio</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div className="pt-8 border-t border-white/5">
+                                <div className="pt-8 border-t border-slate-200 dark:border-white/5">
                                     <h3 className="text-[10px] font-black text-slate-500 mb-6 uppercase tracking-[0.3em] ml-1">ITENS DE VERIFICAÇÃO</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {items.map((item, idx) => (
@@ -422,7 +422,7 @@ const Checklists = () => {
                                     <textarea
                                         value={formData.observacoes}
                                         onChange={(e) => setFormData({ ...formData, observacoes: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-[2rem] px-8 py-6 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all font-medium text-sm placeholder:text-slate-700 h-32 resize-none"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-[2rem] px-8 py-6 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all font-medium text-sm placeholder:text-slate-700 h-32 resize-none"
                                         placeholder="Descreva detalhes ou avarias encontradas..."
                                     />
                                 </div>
@@ -440,7 +440,7 @@ const Checklists = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 px-8 py-5 bg-white/5 border border-white/5 rounded-2xl text-slate-500 hover:text-white font-black uppercase tracking-widest text-[10px] transition-all shadow-xl active:scale-95"
+                                        className="flex-1 px-8 py-5 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl text-slate-500 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-[10px] transition-all shadow-xl active:scale-95"
                                     >
                                         {(isEditing && !isGestor) ? 'FECHAR RELATÓRIO' : 'CANCELAR'}
                                     </button>

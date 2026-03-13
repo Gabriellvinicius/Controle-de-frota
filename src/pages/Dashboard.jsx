@@ -307,16 +307,10 @@ const Dashboard = () => {
             {/* Header section */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2">
                 <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight">
+                    <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                         Visão <span className="text-sky-500">Geral</span>
                     </h1>
-                    <p className="text-slate-400 text-sm mt-1">Monitoramento de frota em tempo real</p>
-                </div>
-                <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2 overflow-hidden p-1 bg-slate-800 rounded-lg border border-slate-700">
-                        <div className="h-8 w-8 rounded-full ring-2 ring-slate-900 bg-sky-900/50 flex items-center justify-center text-xs font-bold text-sky-500">GF</div>
-                        <div className="h-8 w-8 rounded-full ring-2 ring-slate-900 bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-300">AD</div>
-                    </div>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Monitoramento de frota em tempo real</p>
                 </div>
             </div>
 
@@ -328,11 +322,11 @@ const Dashboard = () => {
                     { label: 'Viagens / Mês', value: stats.viagensMes, icon: Map, color: 'text-indigo-500', bg: 'bg-indigo-500/10' },
                     { label: 'Alertas Ativos', value: stats.manutencaoVencida + stats.manutencaoProxima, icon: AlertTriangle, color: 'text-amber-500', bg: 'bg-amber-500/10' }
                 ].map((item, idx) => (
-                    <div key={idx} className="bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-700">
+                    <div key={idx} className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">{item.label}</p>
-                                <h3 className="text-3xl font-bold text-white">{item.value}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">{item.label}</p>
+                                <h3 className="text-3xl font-bold text-slate-900 dark:text-white">{item.value}</h3>
                             </div>
                             <div className={`p-3 rounded-lg ${item.bg} ${item.color}`}>
                                 <item.icon className="w-6 h-6" />
@@ -343,13 +337,13 @@ const Dashboard = () => {
             </div>
 
             {/* 2. Main Financial Row */}
-            <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 md:p-8 shadow-sm">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 md:p-8 shadow-sm transition-colors">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
                     <div>
-                        <h2 className="text-2xl font-bold text-white tracking-tight">
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                             Custos <span className="text-sky-500">Operacionais</span>
                         </h2>
-                        <p className="text-sm text-slate-400 mt-1">Resumo consolidado de despesas mensais</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Resumo consolidado de despesas mensais</p>
                     </div>
                     <div className="flex gap-4">
                         <div className="p-3 bg-slate-700 rounded-lg text-slate-300 hover:text-white transition-colors cursor-pointer">
@@ -358,10 +352,10 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                    {/* Left: Cards */}
-                    <div className="lg:col-span-2">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="flex flex-col gap-8 mb-8">
+                    {/* Top: Cards & Total */}
+                    <div>
+                        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                             {[
                                 { label: 'Combustível', value: operatingCosts.fuel, icon: Droplets, color: 'text-sky-500' },
                                 { label: 'Manutenção', value: operatingCosts.maintenance, icon: Wrench, color: 'text-blue-500' },
@@ -369,48 +363,60 @@ const Dashboard = () => {
                                 { label: 'Pedágios', value: operatingCosts.tolls, icon: Map, color: 'text-indigo-500' },
                                 { label: 'Viagens', value: stats.viagensMes, icon: Map, color: 'text-slate-400', isCount: true }
                             ].map((item, idx) => (
-                                <div key={idx} className="p-4 rounded-lg bg-slate-900/50 border border-slate-700/50">
+                                <div key={idx} className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 transition-colors">
                                     <p className={`text-xs font-bold uppercase tracking-wider mb-2 ${item.color}`}>{item.label}</p>
-                                    <h4 className="text-xl font-bold text-white">
+                                    <h4 className="text-xl font-bold text-slate-900 dark:text-white">
                                         {item.isCount ? item.value : item.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                     </h4>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pt-6 border-t border-slate-700">
-                            <span className="text-slate-500 font-bold uppercase text-xs tracking-wider mb-1 block">Total do Período</span>
-                            <div className="text-4xl font-bold text-white">
+                        <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
+                            <span className="text-slate-500 dark:text-slate-500 font-bold uppercase text-xs tracking-wider mb-1 block">Total do Período</span>
+                            <div className="text-4xl font-bold text-slate-900 dark:text-white">
                                 {(operatingCosts.maintenance + operatingCosts.fuel + operatingCosts.tolls + operatingCosts.fines).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </div>
                         </div>
                     </div>
 
-                    {/* Right: Chart */}
-                    <div className="flex items-center justify-center bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 relative">
-                        <div className="w-48 h-48">
-                            <Doughnut
+                    {/* Bottom: Chart */}
+                    <div className="flex items-center justify-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 transition-colors w-full max-w-6xl mx-auto h-[350px]">
+                        <div className="w-full h-full">
+                            <Bar
                                 data={{
                                     labels: ['Combustível', 'Manutenção', 'Multas', 'Pedágios'],
                                     datasets: [{
+                                        label: 'Valor (R$)',
                                         data: [operatingCosts.fuel, operatingCosts.maintenance, operatingCosts.fines, operatingCosts.tolls],
                                         backgroundColor: ['#0ea5e9', '#3b82f6', '#ef4444', '#6366f1'],
+                                        borderRadius: 6,
                                         borderWidth: 0,
-                                        cutout: '75%'
+                                        barThickness: 24
                                     }]
                                 }}
                                 options={{
-                                    plugins: { legend: { display: false } }
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    indexAxis: 'x',
+                                    plugins: { legend: { display: false } },
+                                    scales: {
+                                        x: {
+                                            grid: { display: false },
+                                            ticks: { color: '#94a3b8', font: { size: 10 } }
+                                        },
+                                        y: {
+                                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                            ticks: { color: '#94a3b8', font: { size: 10 } }
+                                        }
+                                    }
                                 }}
                             />
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <span className="text-xs font-bold text-slate-500 uppercase">Distribuição</span>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="pt-6 border-t border-slate-700 flex justify-end">
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-end">
                     <button onClick={exportToPDF} className="w-full md:w-auto px-6 py-3 bg-sky-600 text-white font-bold uppercase tracking-wide text-xs rounded-lg hover:bg-sky-500 transition-colors flex items-center justify-center gap-3">
                         <FileText className="w-4 h-4" />
                         Exportar Relatório
@@ -421,26 +427,26 @@ const Dashboard = () => {
             {/* 3. Activity & Distribution Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
                 {/* Atividade Recente Table */}
-                <div className="lg:col-span-2 bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-white text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-3">
+                <div className="lg:col-span-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors rounded-xl p-6 shadow-sm">
+                    <h3 className="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-3">
                         <div className="w-2 h-2 bg-sky-500 rounded-full"></div>
                         Atividade Recente
                     </h3>
                     <div className="space-y-3">
                         {activities.map((act, idx) => (
-                            <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-slate-900/50 border border-slate-700/50 hover:bg-slate-700/50 transition-colors cursor-pointer">
+                            <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
                                 <div className="flex items-center gap-4">
                                     <div className={`p-3 rounded-lg ${act.type === 'trip' ? 'bg-blue-500/10 text-blue-500' : 'bg-sky-500/10 text-sky-500'}`}>
                                         {act.type === 'trip' ? <Car className="w-5 h-5" /> : <Wrench className="w-5 h-5" />}
                                     </div>
                                     <div>
-                                        <p className="text-sm font-bold text-white">{act.title}</p>
-                                        <p className="text-xs text-slate-500 mt-0.5">{act.subtitle}</p>
+                                        <p className="text-sm font-bold text-slate-900 dark:text-white">{act.title}</p>
+                                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{act.subtitle}</p>
                                     </div>
                                 </div>
                                 <div className="text-right hidden md:block">
-                                    <p className="text-xs text-slate-400 font-medium">{new Date(act.created_at).toLocaleDateString('pt-BR')}</p>
-                                    <p className="text-[10px] text-slate-500 font-bold uppercase mt-1">Concluído</p>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{new Date(act.created_at).toLocaleDateString('pt-BR')}</p>
+                                    <p className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase mt-1">Concluído</p>
                                 </div>
                             </div>
                         ))}
@@ -448,8 +454,8 @@ const Dashboard = () => {
                 </div>
 
                 {/* Efficiency Chart / Gauge */}
-                <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-sm flex flex-col items-center justify-center">
-                    <h3 className="text-slate-400 text-xs font-bold uppercase tracking-wider self-start mb-8">Eficiência Operacional</h3>
+                <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors rounded-xl p-6 shadow-sm flex flex-col items-center justify-center">
+                    <h3 className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider self-start mb-8">Eficiência Operacional</h3>
                     <div className="relative w-48 h-48">
                         <Doughnut
                             data={{
@@ -470,17 +476,17 @@ const Dashboard = () => {
                             }}
                         />
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <span className="text-4xl font-bold text-white">85<span className="text-sky-500 text-xl">%</span></span>
-                            <span className="text-xs font-bold text-slate-500 uppercase mt-1">No Prazo</span>
+                            <span className="text-4xl font-bold text-slate-900 dark:text-white">85<span className="text-sky-500 text-xl">%</span></span>
+                            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mt-1">No Prazo</span>
                         </div>
                     </div>
                     <div className="w-full mt-8 grid grid-cols-2 gap-4">
-                        <div className="p-3 rounded-lg bg-slate-900 border border-slate-700 text-center">
-                            <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Total</p>
-                            <p className="text-base font-bold text-white">24</p>
+                        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-center transition-colors">
+                            <p className="text-[10px] font-bold text-slate-500 dark:text-slate-500 uppercase mb-1">Total</p>
+                            <p className="text-base font-bold text-slate-900 dark:text-white">24</p>
                         </div>
-                        <div className="p-3 rounded-lg bg-slate-900 border border-slate-700 text-center">
-                            <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Atraso</p>
+                        <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-center transition-colors">
+                            <p className="text-[10px] font-bold text-slate-500 dark:text-slate-500 uppercase mb-1">Atraso</p>
                             <p className="text-base font-bold text-rose-500">02</p>
                         </div>
                     </div>

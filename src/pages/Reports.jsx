@@ -27,7 +27,7 @@ const Reports = () => {
                 <div className="bg-red-500/10 p-6 rounded-3xl border border-red-500/20 mb-6 group hover:scale-110 transition-transform duration-500">
                     <XCircle className="w-16 h-16 text-red-500 mx-auto" />
                 </div>
-                <h2 className="text-3xl font-black text-white uppercase italic tracking-tighter">
+                <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
                     Acesso <span className="text-red-500">Restrito</span>
                 </h2>
                 <p className="text-slate-500 mt-2 max-w-sm mx-auto">Esta área é exclusiva para gestores. Se você acredita que deveria ter acesso, entre em contato com o administrador.</p>
@@ -86,23 +86,23 @@ const Reports = () => {
     };
 
     return (
-        <div className="space-y-6 animate-fade-in text-white">
+        <div className="space-y-6 animate-fade-in text-slate-900 dark:text-white">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         Relatórios da <span className="text-sky-500">Frota</span>
                     </h1>
-                    <p className="text-slate-400">Exportação de dados e indicadores</p>
+                    <p className="text-slate-500 dark:text-slate-400">Exportação de dados e indicadores</p>
                 </div>
             </div>
 
-            <div className="bg-[#1c2229] p-8 rounded-3xl shadow-2xl border border-white/10 max-w-2xl animate-in zoom-in-95 duration-200">
+            <div className="bg-white dark:bg-[#1c2229] p-8 rounded-3xl shadow-2xl border border-slate-200 dark:border-white/10 max-w-2xl animate-in zoom-in-95 duration-200">
                 <div className="flex items-center gap-4 mb-8">
                     <div className="bg-sky-500/10 p-3 rounded-2xl">
                         <Filter className="w-6 h-6 text-sky-500" />
                     </div>
                     <div>
-                        <h2 className="text-xl font-black text-white uppercase tracking-tight italic">
+                        <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight italic">
                             Filtros de <span className="text-sky-500">Exportação</span>
                         </h2>
                         <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Personalize seu relatório</p>
@@ -113,13 +113,13 @@ const Reports = () => {
                     <div>
                         <label className="block text-[10px] font-black text-slate-500 mb-2 uppercase tracking-widest">Veículo (Opcional)</label>
                         <select
-                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                             value={filters.veiculo_id}
                             onChange={e => setFilters({ ...filters, veiculo_id: e.target.value })}
                         >
-                            <option value="" className="bg-[#1c2229]">Todos os veículos</option>
+                            <option value="" className="bg-white dark:bg-[#1c2229]">Todos os veículos</option>
                             {vehicles.map(v => (
-                                <option key={v.id} value={v.id} className="bg-[#1c2229]">
+                                <option key={v.id} value={v.id} className="bg-white dark:bg-[#1c2229]">
                                     {v.modelo} ({v.placa})
                                 </option>
                             ))}
@@ -131,7 +131,7 @@ const Reports = () => {
                             <label className="block text-[10px] font-black text-slate-500 mb-2 uppercase tracking-widest">Data Início</label>
                             <input
                                 type="date"
-                                className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                 value={filters.data_inicio}
                                 onChange={e => setFilters({ ...filters, data_inicio: e.target.value })}
                             />
@@ -140,7 +140,7 @@ const Reports = () => {
                             <label className="block text-[10px] font-black text-slate-500 mb-2 uppercase tracking-widest">Data Fim</label>
                             <input
                                 type="date"
-                                className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                 value={filters.data_fim}
                                 onChange={e => setFilters({ ...filters, data_fim: e.target.value })}
                             />
@@ -155,7 +155,7 @@ const Reports = () => {
                         >
                             {loading ? (
                                 <span className="flex items-center">
-                                    <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-slate-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>

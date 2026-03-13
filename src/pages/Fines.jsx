@@ -106,10 +106,10 @@ const Fines = () => {
         <div className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight">
+                    <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                         Gestão de <span className="text-sky-500">Multas</span>
                     </h1>
-                    <p className="text-slate-400 mt-1">Controle de infrações e custos</p>
+                    <p className="text-slate-500 dark:text-slate-400 mt-1">Controle de infrações e custos</p>
                 </div>
                 <button
                     onClick={() => setShowModal(true)}
@@ -128,7 +128,7 @@ const Fines = () => {
                     placeholder="Buscar por placa ou motorista..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none shadow-sm transition-colors"
                 />
             </div>
 
@@ -149,21 +149,21 @@ const Fines = () => {
                     CARREGANDO DADOS... (Processando)
                 </div>
             ) : filteredFines.length === 0 ? (
-                <div className="text-center py-16 bg-slate-800/50 rounded-2xl border border-dashed border-slate-700">
-                    <FileText className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-400">Nenhuma multa registrada</h3>
+                <div className="text-center py-16 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 transition-colors">
+                    <FileText className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-slate-500 dark:text-slate-400">Nenhuma multa registrada</h3>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredFines.map((fine) => (
-                        <div key={fine.id} className="bg-slate-800 rounded-xl p-5 border border-slate-700 hover:border-sky-500/30 transition-all shadow-sm group">
+                        <div key={fine.id} className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 hover:border-sky-500/30 transition-all shadow-sm group">
                             <div className="flex justify-between items-start mb-4">
                                 <div className="flex items-center gap-3">
                                     <div className="p-2.5 bg-red-500/10 rounded-lg text-red-500">
                                         <FileText className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-white text-lg">
+                                        <h3 className="font-bold text-slate-900 dark:text-white text-lg">
                                             {Number(fine.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                         </h3>
                                         <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
@@ -183,26 +183,26 @@ const Fines = () => {
                             </div>
 
                             <div className="space-y-3 mb-4">
-                                <div className="flex items-center text-sm text-slate-300 bg-slate-900/50 p-2 rounded-lg">
-                                    <Car className="w-4 h-4 mr-3 text-slate-500" />
+                                <div className="flex items-center text-sm text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2 rounded-lg transition-colors">
+                                    <Car className="w-4 h-4 mr-3 text-slate-400 dark:text-slate-500" />
                                     <span className="font-medium">{fine.vehicles?.model}</span>
-                                    <span className="mx-2 text-slate-600">•</span>
-                                    <span className="text-slate-400">{fine.vehicles?.plate}</span>
+                                    <span className="mx-2 text-slate-300 dark:text-slate-600">•</span>
+                                    <span className="text-slate-500 dark:text-slate-400">{fine.vehicles?.plate}</span>
                                 </div>
-                                <div className="flex items-center text-sm text-slate-300 bg-slate-900/50 p-2 rounded-lg">
-                                    <User className="w-4 h-4 mr-3 text-slate-500" />
+                                <div className="flex items-center text-sm text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2 rounded-lg transition-colors">
+                                    <User className="w-4 h-4 mr-3 text-slate-400 dark:text-slate-500" />
                                     <span className="font-medium">{fine.drivers?.name}</span>
                                 </div>
                             </div>
 
                             {fine.descricao && (
-                                <p className="text-sm text-slate-400 mb-4 italic">"{fine.descricao}"</p>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4 italic">"{fine.descricao}"</p>
                             )}
 
-                            <div className="pt-4 border-t border-slate-700 flex justify-end">
+                            <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-end">
                                 <button
                                     onClick={() => handleDelete(fine.id)}
-                                    className="p-2 text-slate-500 hover:text-red-400 transition-colors rounded-lg hover:bg-red-500/10"
+                                    className="p-2 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10"
                                     title="Excluir"
                                 >
                                     <Trash2 className="w-4 h-4" />
@@ -215,11 +215,11 @@ const Fines = () => {
 
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-                    <div className="bg-slate-800 border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl p-6">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 dark:bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+                    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl p-6 transition-colors">
                         <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-xl font-bold text-white">Nova Multa</h2>
-                            <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-white">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Nova Multa</h2>
+                            <button onClick={() => setShowModal(false)} className="text-slate-400 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                                 <XCircle className="w-6 h-6" />
                             </button>
                         </div>
@@ -232,7 +232,7 @@ const Fines = () => {
                                         required
                                         value={formData.veiculo_id}
                                         onChange={(e) => setFormData({ ...formData, veiculo_id: e.target.value })}
-                                        className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none transition-colors"
                                     >
                                         <option value="">Selecione...</option>
                                         {vehicles.map(v => (
@@ -246,7 +246,7 @@ const Fines = () => {
                                         required
                                         value={formData.condutor_id}
                                         onChange={(e) => setFormData({ ...formData, condutor_id: e.target.value })}
-                                        className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none transition-colors"
                                     >
                                         <option value="">Selecione...</option>
                                         {drivers.map(d => (
@@ -265,7 +265,7 @@ const Fines = () => {
                                         required
                                         value={formData.valor}
                                         onChange={(e) => setFormData({ ...formData, valor: e.target.value })}
-                                        className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none transition-colors"
                                         placeholder="0,00"
                                     />
                                 </div>
@@ -276,7 +276,7 @@ const Fines = () => {
                                         required
                                         value={formData.data}
                                         onChange={(e) => setFormData({ ...formData, data: e.target.value })}
-                                        className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                                        className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none transition-colors"
                                     />
                                 </div>
                             </div>
@@ -287,7 +287,7 @@ const Fines = () => {
                                     rows="3"
                                     value={formData.descricao}
                                     onChange={(e) => setFormData({ ...formData, descricao: e.target.value })}
-                                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 outline-none"
+                                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 outline-none transition-colors"
                                     placeholder="Ex: Excesso de velocidade..."
                                 ></textarea>
                             </div>
@@ -296,7 +296,7 @@ const Fines = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowModal(false)}
-                                    className="flex-1 px-4 py-2 border border-slate-700 rounded-lg text-slate-300 hover:bg-slate-700 font-bold text-sm"
+                                    className="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 font-bold text-sm transition-colors"
                                 >
                                     Cancelar
                                 </button>

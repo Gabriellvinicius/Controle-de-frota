@@ -129,13 +129,13 @@ const FuelPage = () => {
     };
 
     return (
-        <div className="space-y-6 animate-fade-in text-white">
+        <div className="space-y-6 animate-fade-in text-slate-900 dark:text-white">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         Registro de <span className="text-sky-500">Abastecimento</span>
                     </h1>
-                    <p className="text-slate-400">Controle de combustível e consumo</p>
+                    <p className="text-slate-500 dark:text-slate-400">Controle de combustível e consumo</p>
                 </div>
                 <button
                     onClick={handleNew}
@@ -151,15 +151,15 @@ const FuelPage = () => {
                     <div
                         key={item.id}
                         onClick={() => handleEdit(item)}
-                        className="bg-[#1c2229] p-6 rounded-2xl shadow-xl border border-white/5 flex items-center justify-between group hover:border-sky-500/30 transition-all duration-300 cursor-pointer"
+                        className="bg-white dark:bg-[#1c2229] p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-white/5 flex items-center justify-between group hover:border-sky-500/30 transition-all duration-300 cursor-pointer"
                     >
                         <div>
-                            <h3 className="text-lg font-black text-white uppercase tracking-tight italic">
+                            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight italic">
                                 {item.veiculos?.modelo} <span className="text-slate-500 text-xs font-bold not-italic">({item.veiculos?.placa})</span>
                             </h3>
                             <p className="text-slate-500 text-[10px] font-black mt-1 uppercase tracking-widest">{new Date(item.data).toLocaleDateString('pt-BR')}</p>
-                            <div className="mt-4 flex flex-wrap gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                                <span className="flex items-center text-slate-200">
+                            <div className="mt-4 flex flex-wrap gap-4 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                                <span className="flex items-center">
                                     <Users className="w-3 h-3 mr-1 text-sky-500" /> {item.condutores?.nome || item.driver_name || 'N/A'}
                                 </span>
                                 <span className="flex items-center"><Droplets className="w-3 h-3 mr-1 text-sky-500" /> {item.litros} L</span>
@@ -170,25 +170,25 @@ const FuelPage = () => {
                             </div>
                         </div>
                         <div className="text-right">
-                            <span className="block text-2xl font-black text-white italic tracking-tighter group-hover:text-sky-500 transition-colors">R$ {parseFloat(item.valor).toFixed(2)}</span>
+                            <span className="block text-2xl font-black text-slate-900 dark:text-white italic tracking-tighter group-hover:text-sky-500 transition-colors">R$ {parseFloat(item.valor).toFixed(2)}</span>
                             <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Total</span>
                         </div>
                     </div>
                 ))}
                 {data.length === 0 && (
-                    <div className="col-span-full py-12 text-center text-slate-500 bg-[#1c2229] rounded-2xl border border-dashed border-white/10">
+                    <div className="col-span-full py-12 text-center text-slate-500 bg-white dark:bg-[#1c2229] rounded-2xl border border-dashed border-slate-200 dark:border-white/10">
                         Nenhum abastecimento registrado.
                     </div>
                 )}
                 {/* Modal */}
                 {showModal && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
-                        <div className="bg-[#1c2229] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 dark:bg-black/70 backdrop-blur-md p-4">
+                        <div className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
                             <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                                <h2 className="text-xl font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
                                     {isEditing ? 'Editar' : 'Novo'} <span className="text-sky-500">Abastecimento</span>
                                 </h2>
-                                <button onClick={() => setShowModal(false)} className="bg-white/5 p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
+                                <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                                     <X className="w-6 h-6" />
                                 </button>
                             </div>
@@ -200,11 +200,11 @@ const FuelPage = () => {
                                         required
                                         value={formData.veiculo_id}
                                         onChange={(e) => setFormData({ ...formData, veiculo_id: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                     >
-                                        <option value="" className="bg-[#1c2229]">Selecione um veículo</option>
+                                        <option value="" className="bg-white dark:bg-[#1c2229]">Selecione um veículo</option>
                                         {vehicles.map(v => (
-                                            <option key={v.id} value={v.id} className="bg-[#1c2229] whitespace-pre">
+                                            <option key={v.id} value={v.id} className="bg-white dark:bg-[#1c2229] whitespace-pre">
                                                 {v.modelo} ({v.placa})
                                             </option>
                                         ))}
@@ -217,11 +217,11 @@ const FuelPage = () => {
                                         required
                                         value={formData.condutor_id}
                                         onChange={(e) => setFormData({ ...formData, condutor_id: e.target.value })}
-                                        className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                        className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                     >
-                                        <option value="" className="bg-[#1c2229]">Selecione um motorista</option>
+                                        <option value="" className="bg-white dark:bg-[#1c2229]">Selecione um motorista</option>
                                         {drivers.map(d => (
-                                            <option key={d.id} value={d.id} className="bg-[#1c2229]">
+                                            <option key={d.id} value={d.id} className="bg-white dark:bg-[#1c2229]">
                                                 {d.nome}
                                             </option>
                                         ))}
@@ -236,7 +236,7 @@ const FuelPage = () => {
                                             required
                                             value={formData.data}
                                             onChange={(e) => setFormData({ ...formData, data: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                         />
                                     </div>
                                     <div>
@@ -247,7 +247,7 @@ const FuelPage = () => {
                                             required
                                             value={formData.valor}
                                             onChange={(e) => setFormData({ ...formData, valor: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                             placeholder="0,00"
                                         />
                                     </div>
@@ -262,7 +262,7 @@ const FuelPage = () => {
                                             required
                                             value={formData.litros}
                                             onChange={(e) => setFormData({ ...formData, litros: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                             placeholder="0,00"
                                         />
                                     </div>
@@ -273,7 +273,7 @@ const FuelPage = () => {
                                             required
                                             value={formData.km}
                                             onChange={(e) => setFormData({ ...formData, km: e.target.value })}
-                                            className="w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            className="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
                                             placeholder="0"
                                         />
                                     </div>
@@ -292,7 +292,7 @@ const FuelPage = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 px-4 py-3 border border-white/10 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white font-black uppercase tracking-widest text-xs transition-all"
+                                        className="flex-1 px-4 py-3 border border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-xs transition-all"
                                     >
                                         {isGestor ? 'Cancelar' : 'Fechar'}
                                     </button>

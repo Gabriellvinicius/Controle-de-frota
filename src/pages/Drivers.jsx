@@ -151,13 +151,13 @@ const Drivers = () => {
     );
 
     return (
-        <div className="space-y-6 animate-fade-in text-white">
+        <div className="space-y-6 animate-fade-in text-slate-900 dark:text-white">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black text-white tracking-tight italic uppercase">
+                    <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
                         CADASTRO DE <span className="text-sky-500">MOTORISTAS</span>
                     </h1>
-                    <p className="text-slate-400">Gerencie condutores e validade de CNH</p>
+                    <p className="text-slate-500 dark:text-slate-400">Gerencie condutores e validade de CNH</p>
                 </div>
                 {isGestor && (
                     <button
@@ -178,7 +178,7 @@ const Drivers = () => {
                     placeholder="Buscar por nome ou CPF..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border-white/10 text-white focus:ring-sky-500 focus:border-sky-500 shadow-sm outline-none"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:ring-sky-500 focus:border-sky-500 shadow-sm outline-none"
                 />
             </div>
 
@@ -189,9 +189,9 @@ const Drivers = () => {
                 </div>
             ) : drivers.length === 0 ? (
 
-                <div className="text-center py-12 bg-[#1c2229] rounded-2xl border border-dashed border-white/10">
-                    <Users className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-slate-400">Nenhum condutor cadastrado</h3>
+                <div className="text-center py-12 bg-white dark:bg-[#1c2229] rounded-2xl border border-dashed border-slate-200 dark:border-white/10">
+                    <Users className="w-16 h-16 text-slate-400 dark:text-slate-600 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-slate-500 dark:text-slate-400">Nenhum condutor cadastrado</h3>
                     <button
                         onClick={handleNew}
                         className="text-sky-500 font-medium hover:underline mt-4"
@@ -207,15 +207,15 @@ const Drivers = () => {
                             <div
                                 key={driver.id}
                                 onClick={() => handleEdit(driver)}
-                                className="bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
+                                className="bg-white dark:bg-[#1c2229] rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-white/5 group hover:border-sky-500/30 transition-all duration-300 cursor-pointer relative"
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="flex items-center">
-                                        <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-sky-500 font-black text-xl mr-4 group-hover:scale-110 transition-transform">
+                                        <div className="h-12 w-12 rounded-2xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-sky-500 font-black text-xl mr-4 group-hover:scale-110 transition-transform">
                                             {driver.nome.charAt(0)}
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-black text-white uppercase tracking-tight">{driver.nome}</h3>
+                                            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">{driver.nome}</h3>
                                             <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">{driver.categoria_cnh}</p>
                                         </div>
                                     </div>
@@ -224,19 +224,19 @@ const Drivers = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-white/5 rounded-xl p-4 mt-2 border border-white/5">
+                                <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-4 mt-2 border border-slate-200 dark:border-white/5">
                                     <div className="flex justify-between items-center mb-1">
                                         <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">Validade CNH</span>
                                         <span className={`text-[10px] font-black px-2 py-0.5 rounded uppercase ${statusCNH.color.replace('bg-', 'bg-').replace('text-', 'text-')}`}>
                                             {statusCNH.label}
                                         </span>
                                     </div>
-                                    <div className="text-white font-black text-xl italic tracking-tighter">
+                                    <div className="text-slate-900 dark:text-white font-black text-xl italic tracking-tighter">
                                         {new Date(driver.validade_cnh).toLocaleDateString('pt-BR')}
                                     </div>
                                 </div>
 
-                                <div className="mt-4 pt-4 border-t border-white/5 flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/5 flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest">
                                     <span>CPF: {driver.cpf}</span>
                                     <span className="text-sky-500 group-hover:underline">{isGestor ? 'Clique para editar' : 'Clique para visualizar'}</span>
                                 </div>
@@ -248,13 +248,13 @@ const Drivers = () => {
 
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
-                    <div className="bg-[#1c2229] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 dark:bg-black/70 backdrop-blur-md p-4">
+                    <div className="bg-white dark:bg-[#1c2229] border border-slate-200 dark:border-white/10 rounded-3xl w-full max-w-lg shadow-2xl p-8 animate-in zoom-in-95 duration-200">
                         <div className="flex justify-between items-center mb-8">
-                            <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                            <h2 className="text-xl font-black text-slate-900 dark:text-white italic uppercase tracking-tight">
                                 {isEditing ? 'Editar' : 'Novo'} <span className="text-sky-500">Condutor</span>
                             </h2>
-                            <button onClick={() => setShowModal(false)} className="bg-white/5 p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
+                            <button onClick={() => setShowModal(false)} className="bg-slate-50 dark:bg-white/5 p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                                 <X className="w-6 h-6" />
                             </button>
                         </div>
@@ -268,7 +268,7 @@ const Drivers = () => {
                                     readOnly={!isGestor}
                                     value={formData.nome}
                                     onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     placeholder="Ex: Gabriel Silva"
                                 />
                             </div>
@@ -282,7 +282,7 @@ const Drivers = () => {
                                         readOnly={!isGestor}
                                         value={formData.cpf}
                                         onChange={(e) => setFormData({ ...formData, cpf: e.target.value })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                         placeholder="000.000.000-00"
                                     />
                                 </div>
@@ -292,16 +292,16 @@ const Drivers = () => {
                                         disabled={!isGestor}
                                         value={formData.categoria_cnh}
                                         onChange={(e) => setFormData({ ...formData, categoria_cnh: e.target.value })}
-                                        className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                     >
-                                        <option className="bg-[#1c2229]">A</option>
-                                        <option className="bg-[#1c2229]">B</option>
-                                        <option className="bg-[#1c2229]">C</option>
-                                        <option className="bg-[#1c2229]">D</option>
-                                        <option className="bg-[#1c2229]">E</option>
-                                        <option className="bg-[#1c2229]">AB</option>
-                                        <option className="bg-[#1c2229]">AD</option>
-                                        <option className="bg-[#1c2229]">AE</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">A</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">B</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">C</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">D</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">E</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">AB</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">AD</option>
+                                        <option className="bg-white dark:bg-[#1c2229]">AE</option>
                                     </select>
                                 </div>
                             </div>
@@ -314,7 +314,7 @@ const Drivers = () => {
                                     readOnly={!isGestor}
                                     value={formData.validade_cnh}
                                     onChange={(e) => setFormData({ ...formData, validade_cnh: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 />
                             </div>
 
@@ -324,10 +324,10 @@ const Drivers = () => {
                                     disabled={!isGestor}
                                     value={formData.status}
                                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                    className={`w-full bg-white/5 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                    className={`w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all ${!isGestor ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
-                                    <option value="ativo" className="bg-[#1c2229]">Ativo</option>
-                                    <option value="inativo" className="bg-[#1c2229]">Inativo</option>
+                                    <option value="ativo" className="bg-white dark:bg-[#1c2229]">Ativo</option>
+                                    <option value="inativo" className="bg-white dark:bg-[#1c2229]">Inativo</option>
                                 </select>
                             </div>
 
@@ -344,7 +344,7 @@ const Drivers = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowModal(false)}
-                                    className="flex-1 px-4 py-3 border border-white/10 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white font-black uppercase tracking-widest text-xs transition-all"
+                                    className="flex-1 px-4 py-3 border border-slate-200 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white font-black uppercase tracking-widest text-xs transition-all"
                                 >
                                     {isGestor ? 'Cancelar' : 'Fechar'}
                                 </button>

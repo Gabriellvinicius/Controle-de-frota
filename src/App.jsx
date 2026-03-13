@@ -16,6 +16,7 @@ import AccessControl from './pages/AccessControl';
 import { supabase } from './services/supabase';
 
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function AppContent() {
   const { user } = useAuth();
@@ -46,9 +47,11 @@ function AppContent() {
 
 function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
